@@ -1,0 +1,21 @@
+<form (ngSubmit)="add()" #addBillForm="ngForm">
+  <div>
+    <label for="dueDate">Due Date</label>
+    <select id="dueDate" name="dueDate" [(ngModel)]="bill.dueDate">
+      <option *ngFor="let date of dates" [value]="date">{{ date }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <input type="text" id="description" name="description" [(ngModel)]="bill.description">
+  </div>
+  <div>
+    <label for="payee">Payee</label>
+    <input type="text" id="payee" name="payee" required [(ngModel)]="bill.payee">
+  </div>
+  <div>
+    <label for="amountDue">Amount Due</label>
+    <input type="number" id="amountDue" name="amountDue" required [(ngModel)]="bill.amountDue">
+  </div>
+  <button type="submit">Add Bill</button>
+</form>

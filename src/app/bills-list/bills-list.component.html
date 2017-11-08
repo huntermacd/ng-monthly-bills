@@ -1,3 +1,4 @@
+<app-add-bill [bills]="bills"></app-add-bill>
 <div *ngFor="let bill of bills">
   <ul>
     <li>{{bill.dueDate}}</li>
@@ -7,4 +8,5 @@
   </ul>
   <label for="paid">Paid?</label>
   <input type="checkbox" name="paid" (change)="togglePaid(bill)" [checked]="bill.paid">
+  <div (click)="delete(bill)">X</div>
 </div>

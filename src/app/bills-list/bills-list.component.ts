@@ -14,11 +14,19 @@ export class BillsListComponent implements OnInit {
 
   ngOnInit() {
     this.billsService.getBills()
-      .then(bills => this.bills = bills);
+      .subscribe(bills => this.bills = bills);
   }
 
   togglePaid(bill: Bill): void {
     const toggledBill = Object.assign({}, bill, {paid: !bill.paid});
-    this.billsService.togglePaid(toggledBill);
+    this.billsService.togglePaid(toggledBill)
+      .subscribe(() => null);
+  }
+
+  delete(bill: Bill): void {
+    this.billsService.delete(bill)
+      .subscribe(() => {
+        this.bills = this.bills.filter(b => b !== bill);
+      });
   }
 }
