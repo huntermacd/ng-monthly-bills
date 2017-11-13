@@ -1,31 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Bill } from './bill.model';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class BillsService {
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  billsUrl = 'http://localhost:3000/bills';
 
   getBills() {
-    return this.http.get('http://localhost:3000/bills')
-      .map(res => res.json() as Bill[]);
+    return this.http.get<Bill[]>(this.billsUrl);
   }
 
   add(bill: Bill) {
-    return this.http.post('http://localhost:3000/bills', JSON.stringify(bill), {headers: this.headers})
-      .map(res => res.json() as Bill);
+    return this.http.post<Bill>(this.billsUrl, bill, httpOptions);
   }
 
   togglePaid(bill: Bill) {
-    return this.http.put(`http://localhost:3000/bills/${bill.id}`, JSON.stringify(bill), {headers: this.headers})
-      .map(() => null);
+    return this.http.put(`${this.billsUrl}/${bill.id}`, bill, httpOptions);
   }
 
   delete(bill: Bill) {
-    return this.http.delete(`http://localhost:3000/bills/${bill.id}`)
-      .map(() => null);
+    return this.http.delete<Bill>(`${this.billsUrl}/${bill.id}`, httpOptions);
   }
 }

@@ -20,7 +20,7 @@ export class BillsListComponent implements OnInit {
   togglePaid(bill: Bill): void {
     const toggledBill = Object.assign({}, bill, {paid: !bill.paid});
     this.billsService.togglePaid(toggledBill)
-      .subscribe(() => null);
+      .subscribe();
   }
 
   delete(bill: Bill): void {
