@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import { BillsService } from './bills.service';
-import { Bill } from './bill.model';
+import { BillsService } from './shared/services/bills.service';
+import { Bill } from './shared/models/Bill';
 import {
   AppActionTypes,
   LoadBills,

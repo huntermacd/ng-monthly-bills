@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Bill } from '../bill.model';
-import { BillsService } from '../bills.service';
+import { Bill } from '../shared/models/Bill';
+import { BillsService } from '../shared/services/bills.service';
 
 @Component({
   selector: 'app-add-bill',

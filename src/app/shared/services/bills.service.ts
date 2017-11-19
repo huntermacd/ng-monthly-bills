@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Bill } from './bill.model';
+import { Bill } from '../../shared/models/Bill';
+import { Observable } from 'rxjs/Observable';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,7 +13,7 @@ export class BillsService {
 
   billsUrl = 'http://localhost:3000/bills';
 
-  getBills() {
+  getBills(): Observable<Bill[]> {
     return this.http.get<Bill[]>(this.billsUrl);
   }
 

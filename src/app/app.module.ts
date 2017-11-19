@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { BillsListComponent } from './bills-list/bills-list.component';
 
-import { BillsService } from './bills.service';
+import { BillsService } from './shared/services/bills.service';
 import { AddBillComponent } from './add-bill/add-bill.component';
 import { billsReducer } from './app.reducer';
 import { BillsEffects } from './app.effects';

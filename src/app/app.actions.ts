@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Bill } from './bill.model';
+import { Bill } from './shared/models/Bill';
 
 export const enum AppActionTypes {
   LOAD_BILLS = '[Bills] Load Bills',

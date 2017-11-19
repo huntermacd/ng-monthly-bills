@@ -1,28 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { AppState } from '../app.reducer';
-import { Bill } from '../bill.model';
+import { Bill } from '../shared/models/Bill';
 
 @Component({
   selector: 'app-bills-list',
   templateUrl: './bills-list.component.html',
   styleUrls: ['./bills-list.component.css']
 })
-export class BillsListComponent implements OnInit {
-  bills = [];
+export class BillsListComponent {
+  bills$: Observable<Bill[]>;
 
-  private subscription: Subscription;
-
-  constructor(private store: Store<any>) { }
-
-  ngOnInit() {
-    this.subscription =
-      this.store.select(state => state.appState.bills)
-        .subscribe((bills) => {
-          this.bills = bills;
-        });
+  constructor(private store: Store<any>) {
+    this.bills$ = store.select(state => state.appState.bills);
   }
 
   // togglePaid(bill: Bill): void {

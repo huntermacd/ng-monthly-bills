@@ -1,5 +1,6 @@
 <!-- <app-add-bill [bills]="bills"></app-add-bill> -->
-<div *ngFor="let bill of bills">
+<div *ngFor="let bill of bills$ | async">
+  <p>{{bill | json}}</p>
   <ul>
     <li>{{bill.dueDate}}</li>
     <li>{{bill.description}}</li>

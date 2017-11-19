@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from './app.reducer';
+import { Observable } from 'rxjs/Observable';
 import { LoadBills } from './app.actions';
+import { Bill } from './shared/models/Bill';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { LoadBills } from './app.actions';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
     this.store.dispatch(new LoadBills());

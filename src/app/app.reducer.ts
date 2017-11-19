@@ -1,5 +1,5 @@
 import { AppActions, AppActionTypes } from './app.actions';
-import { Bill } from './bill.model';
+import { Bill } from './shared/models/Bill';
 
 export interface AppState {
   bills: Bill[];
